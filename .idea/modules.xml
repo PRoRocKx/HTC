@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Week1/Calc.iml" filepath="$PROJECT_DIR$/Week1/Calc.iml" />
       <module fileurl="file://$PROJECT_DIR$/Car/Car.iml" filepath="$PROJECT_DIR$/Car/Car.iml" />
       <module fileurl="file://$PROJECT_DIR$/Complex/Complex.iml" filepath="$PROJECT_DIR$/Complex/Complex.iml" />
       <module fileurl="file://$PROJECT_DIR$/HTC.iml" filepath="$PROJECT_DIR$/HTC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Week1/Week1.iml" filepath="$PROJECT_DIR$/Week1/Week1.iml" />
     </modules>
   </component>
 </project>
