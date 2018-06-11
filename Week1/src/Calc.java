@@ -8,13 +8,7 @@ public class Calc {
                 break;
             case 2: expression.result = (expression.a * expression.b);
                 break;
-            case 3:
-                try {
-                    expression.result = (expression.a / expression.b);
-                } catch (ArithmeticException e){
-                    expression.valid = false;
-                    expression.error = "/ by zero";
-                }
+            case 3: expression.result = (expression.a / expression.b);
                 break;
             case 4: expression.result = (Math.pow(expression.a, expression.b));
                 break;
@@ -35,7 +29,7 @@ public class Calc {
             if (expression.error != null && !expression.error.isEmpty())
                 return expression.error;
             else
-                return "error";
+                return exp + " is not an expression";
         }
     }
 
