@@ -1,4 +1,4 @@
-public class Engine extends BasicPart {
+public class Engine extends BasicContainerPart {
     private float capacity;
     private int horsepower;
     private int torque;

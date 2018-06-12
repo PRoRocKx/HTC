@@ -1,4 +1,4 @@
-public class Suspension extends BasicPart{
+public class Suspension extends BasicContainerPart {
     private int wheelCount;
     private int rad;
     private int width;
