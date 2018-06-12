@@ -1,4 +1,4 @@
-public class Body extends BasicPart {
+public class Body extends BasicContainerPart{
     private String color;
     private int doorCount;
 

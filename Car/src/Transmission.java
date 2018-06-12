@@ -1,4 +1,4 @@
-public class Transmission extends BasicPart{
+public class Transmission extends BasicContainerPart {
     private String type;
     private int maxPower;
     private int gears;
