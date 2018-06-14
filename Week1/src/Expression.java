@@ -23,4 +23,6 @@ public class Expression {
         this.error = error;
     }
 
+    public Expression() {
+    }
 }

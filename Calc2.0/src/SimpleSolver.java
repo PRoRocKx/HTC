@@ -1,6 +1,6 @@
-public class Calc {
+public class SimpleSolver implements Calc {
 
-    private void calculate(Expression expression){
+    public double calculate(Expression expression){
         switch (expression.action){
             case 0: expression.result = (expression.a - expression.b);
                 break;
@@ -15,22 +15,17 @@ public class Calc {
             default:
                 expression.valid = false;
         }
+        return expression.result;
     }
 
-    public String calculate(String exp){
+    @Override
+    public double calculate(String exp) {
         InputParser inputParser = new InputParser();
         Expression expression = inputParser.parse(exp);
         calculate(expression);
-        if (expression.valid){
-            int intResult = (int)expression.result;
-            return expression.result == intResult ? String.valueOf(intResult) : String.valueOf(expression.result);
-        }
-        else{
-            if (expression.error != null && !expression.error.isEmpty())
-                return expression.error;
-            else
-                return exp + " is not an expression";
-        }
+        if (expression.valid)
+            return (expression.result);
+        else
+            throw new ArithmeticException();
     }
-
 }
