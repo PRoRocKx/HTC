@@ -21,8 +21,9 @@ public class ListsMain {
                 list2.remove(n);
                 end--;
             }
-            else
+            else {
                 n++;
+            }
         }
         System.out.println(list2);
     }
