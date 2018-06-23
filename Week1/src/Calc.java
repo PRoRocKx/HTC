@@ -1,35 +1,48 @@
+import java.text.ParseException;
+
 public class Calc {
 
-    private void calculate(Expression expression){
-        switch (expression.action){
-            case 0: expression.result = (expression.a - expression.b);
+    protected final InputParser inputParser;
+
+    public Calc() {
+        inputParser = new InputParser();
+    }
+
+    public double calculate(Expression expression){
+        switch (expression.getAction()){
+            case DIFF: expression.setResult(expression.getA() - expression.getB());
                 break;
-            case 1: expression.result = (expression.a + expression.b);
+            case SUM: expression.setResult(expression.getA() + expression.getB());
                 break;
-            case 2: expression.result = (expression.a * expression.b);
+            case MULT: expression.setResult(expression.getA() * expression.getB());
                 break;
-            case 3: expression.result = (expression.a / expression.b);
+            case QUOT: expression.setResult(expression.getA() / expression.getB());
                 break;
-            case 4: expression.result = (Math.pow(expression.a, expression.b));
+            case EXP: expression.setResult(Math.pow(expression.getA(), expression.getB()));
                 break;
-            default:
-                expression.valid = false;
         }
+        return expression.getResult();
     }
 
     public String calculate(String exp){
-        InputParser inputParser = new InputParser();
-        Expression expression = inputParser.parse(exp);
+        Expression expression = null;
+        try {
+            expression = inputParser.parse(exp);
+        } catch (ParseException e) {
+            return exp + " " + e.getLocalizedMessage();
+        }
         calculate(expression);
-        if (expression.valid){
-            int intResult = (int)expression.result;
-            return expression.result == intResult ? String.valueOf(intResult) : String.valueOf(expression.result);
+        if (expression.isValid()){
+            int intResult = (int)expression.getResult();
+            return expression.getResult() == intResult ? String.valueOf(intResult) : String.valueOf(expression.getResult());
         }
         else{
-            if (expression.error != null && !expression.error.isEmpty())
-                return expression.error;
-            else
+            if (expression.getError() != null && !expression.getError().isEmpty()) {
+                return expression.getError();
+            }
+            else {
                 return exp + " is not an expression";
+            }
         }
     }
 

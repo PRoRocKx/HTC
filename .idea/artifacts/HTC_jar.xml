@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HTC:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HTC_jar</output-path>
+    <root id="archive" name="HTC.jar">
+      <element id="module-output" name="Calc" />
+      <element id="module-output" name="Complex" />
+      <element id="module-output" name="Car" />
+    </root>
+  </artifact>
+</component>

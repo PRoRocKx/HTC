@@ -1,6 +1,13 @@
+import java.text.ParseException;
 import java.util.Arrays;
 
 public class Solver implements Calc {
+
+    private final InputParser inputParser;
+
+    public Solver() {
+        inputParser = new InputParser();
+    }
 
     private char[] getChar(int i){
         char[] chars = new char[2];
@@ -22,8 +29,7 @@ public class Solver implements Calc {
     }
 
     @Override
-    public double calculate(String exp) {
-        InputParser inputParser = new InputParser();
+    public double calculate(String exp) throws ParseException {
         //for (int i = InputParser.OPERATIONS.length - 1; i >= 0 ; i--) {
         for (int i = 0; i < 3; i++) {
             boolean find = true;
@@ -33,10 +39,12 @@ public class Solver implements Calc {
                 System.out.println(exp);
                 ExpressionEx expressionEx = inputParser.findExp(exp, chars[0], chars[1]);
                 find = expressionEx.find;
-                if (!expressionEx.valid)
+                if (!expressionEx.isValid()) {
                     throw new ArithmeticException();
-                if (!find)
+                }
+                if (!find) {
                     break;
+                }
                 double res = calculate(expressionEx);
                 exp = inputParser.replace(exp, expressionEx);
             } while (find);

@@ -1,8 +1,17 @@
+import java.text.ParseException;
+
 public class SolverEX implements Calc{
 
+    private final Calc simpleSolver;
+    private final InputParser inputParser;
+
+    SolverEX() {
+        simpleSolver = new SimpleSolver();
+        inputParser = new InputParser();
+    }
+
     @Override
-    public double calculate(String exp) {
-        InputParser inputParser = new InputParser();
+    public double calculate(String exp) throws ParseException {
         boolean stop = false;
         do {
             String tempExp = inputParser.findBrackets(exp);
@@ -10,8 +19,9 @@ public class SolverEX implements Calc{
                 Calc calc = new Solver();
                 exp = inputParser.replace(exp, tempExp, calc.calculate(tempExp.substring(1,tempExp.length() - 1)));
             }
-            else
+            else {
                 stop = true;
+            }
         }while (!stop);
         Calc calc = new Solver();
         return calc.calculate(exp);
@@ -19,7 +29,6 @@ public class SolverEX implements Calc{
 
     @Override
     public double calculate(Expression exp) {
-        Calc simpleSolver = new SimpleSolver();
         return simpleSolver.calculate(exp);
     }
 }

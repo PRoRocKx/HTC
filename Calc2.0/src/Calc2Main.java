@@ -1,3 +1,5 @@
+import java.text.ParseException;
+
 public class Calc2Main {
 
     public static void main(String... arg) {
@@ -5,7 +7,11 @@ public class Calc2Main {
         FileIO fileIO = new FileIO();
         String exp = fileIO.read();
         if (exp != null){
-            fileIO.write(calc.calculate(exp));
+            try {
+                fileIO.write(calc.calculate(exp));
+            } catch (ParseException e) {
+                System.out.println(e.getLocalizedMessage());
+            }
         }
     }
 }

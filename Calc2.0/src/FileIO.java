@@ -20,8 +20,7 @@ public class FileIO {
     }
 
     public void write(Double res){
-        try {
-            FileWriter writer = new FileWriter(FILENAME, true);
+        try (FileWriter writer = new FileWriter(FILENAME, true)){
             writer.write( "\n" + res.toString());
 
             writer.close();

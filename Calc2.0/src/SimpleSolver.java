@@ -1,31 +1,37 @@
+import java.text.ParseException;
+
 public class SimpleSolver implements Calc {
+    private final InputParser inputParser;
+
+    public SimpleSolver() {
+        inputParser = new InputParser();
+    }
 
     public double calculate(Expression expression){
-        switch (expression.action){
-            case 0: expression.result = (expression.a - expression.b);
+        switch (expression.getAction()){
+            case DIFF: expression.setResult(expression.getA() - expression.getB());
                 break;
-            case 1: expression.result = (expression.a + expression.b);
+            case SUM: expression.setResult(expression.getA() + expression.getB());
                 break;
-            case 2: expression.result = (expression.a * expression.b);
+            case MULT: expression.setResult(expression.getA() * expression.getB());
                 break;
-            case 3: expression.result = (expression.a / expression.b);
+            case QUOT: expression.setResult(expression.getA() / expression.getB());
                 break;
-            case 4: expression.result = (Math.pow(expression.a, expression.b));
+            case EXP: expression.setResult(Math.pow(expression.getA(), expression.getB()));
                 break;
-            default:
-                expression.valid = false;
         }
-        return expression.result;
+        return expression.getResult();
     }
 
     @Override
-    public double calculate(String exp) {
-        InputParser inputParser = new InputParser();
+    public double calculate(String exp) throws ParseException {
         Expression expression = inputParser.parse(exp);
         calculate(expression);
-        if (expression.valid)
-            return (expression.result);
-        else
+        if (expression.isValid()) {
+            return (expression.getResult());
+        }
+        else {
             throw new ArithmeticException();
+        }
     }
 }

@@ -3,7 +3,7 @@ public class ExpressionEx extends Expression {
     int endChar;
     boolean find = false;
 
-    public ExpressionEx(double a, double b, int action, int startChar, int endChar) {
+    public ExpressionEx(double a, double b, Action action, int startChar, int endChar) {
         super(a, b, action);
         this.startChar = startChar;
         this.endChar = endChar;
