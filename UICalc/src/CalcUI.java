@@ -53,8 +53,9 @@ public class CalcUI extends JFrame{
             if (e.getActionCommand().equals("=")) {
                 Calc calc = new Calc();
                 textField1.setText((calc.calculate(textField1.getText())));
-            } else
-            textField1.setText(textField1.getText() + e.getActionCommand());
+            } else {
+                textField1.setText(textField1.getText() + e.getActionCommand());
+            }
         }
 
 

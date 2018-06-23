@@ -11,8 +11,9 @@ public class Contacts implements ContactBook {
 
     private boolean parse(String s){
         String[] strings = s.split(";");
-        if (strings.length != 4)
+        if (strings.length != 4) {
             return false;
+        }
         Contact contact = new Contact();
         contact.name = strings[0];
         contact.phone = strings[1];
@@ -67,20 +68,24 @@ public class Contacts implements ContactBook {
     public String findContact(String name) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Contact contact:contacts) {
-            if (contact.name.toLowerCase(Locale.getDefault()).contains(name.toLowerCase(Locale.getDefault())))
+            if (contact.name.toLowerCase(Locale.getDefault()).contains(name.toLowerCase(Locale.getDefault()))) {
                 stringBuilder.append(contact.toString());
+            }
         }
-        if (stringBuilder.length() == 0)
+        if (stringBuilder.length() == 0) {
             return "Contact not found";
+        }
         return stringBuilder.toString();
     }
 
     @Override
     public String addContact(String contact) {
-        if (!parse(contact))
+        if (!parse(contact)) {
             return "Error parse contact";
-        if (!write())
+        }
+        if (!write()) {
             return "Error save contact";
+        }
         return "ok!";
     }
 
@@ -89,8 +94,9 @@ public class Contacts implements ContactBook {
         for (Contact contact:contacts) {
             if (contact.name.equals(name)) {
                 contacts.remove(contact);
-                if (!write())
+                if (!write()) {
                     return "Error save contact";
+                }
                 return "ok!";
             }
         }

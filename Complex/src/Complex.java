@@ -15,8 +15,9 @@ public class Complex {
     }
 
     public double getFi() {
-        if (real == 0 && imaginary == 0)
+        if (real == 0 && imaginary == 0) {
             throw new ArithmeticException();
+        }
         if (real > 0) {
             return Math.atan(imaginary / real);
         } else {
@@ -54,8 +55,9 @@ public class Complex {
 
     public Complex div(Complex complex){
         double divider = Math.pow(complex.real,2) + Math.pow(complex.imaginary,2);
-        if (divider == 0)
+        if (divider == 0) {
             throw new ArithmeticException();
+        }
         return new Complex((real*complex.real + imaginary*complex.imaginary)/divider, (imaginary*complex.real - real*complex.imaginary)/divider);
     }
 

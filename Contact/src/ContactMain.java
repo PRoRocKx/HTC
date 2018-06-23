@@ -45,8 +45,9 @@ public class ContactMain {
                     if (input.equals("list")) {
                         System.out.println(contactBook.getContacts());
                     }
-                    else
+                    else {
                         System.out.println("Unknown command");
+                    }
 
             }
 
