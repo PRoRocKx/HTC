@@ -29,8 +29,7 @@ public class SimpleSolver implements Calc {
         calculate(expression);
         if (expression.isValid()) {
             return (expression.getResult());
-        }
-        else {
+        } else {
             throw new ArithmeticException();
         }
     }

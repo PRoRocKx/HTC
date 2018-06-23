@@ -41,14 +41,13 @@ public class ContactMain {
                             break;
                         default: System.out.println("Unknown command");
                     }
-                }else
+                }else {
                     if (input.equals("list")) {
                         System.out.println(contactBook.getContacts());
-                    }
-                    else {
+                    } else {
                         System.out.println("Unknown command");
                     }
-
+                }
             }
 
         } catch (IOException e) {

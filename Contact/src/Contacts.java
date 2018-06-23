@@ -8,17 +8,18 @@ public class Contacts implements ContactBook {
     private List<Contact> contacts;
 
     private static final String FILENAME = "contact.txt";
+    private static final int FIELDS_COUNT = 4;
 
     private boolean parse(String s){
         String[] strings = s.split(";");
-        if (strings.length != 4) {
+        if (strings.length != FIELDS_COUNT) {
             return false;
         }
         Contact contact = new Contact();
-        contact.name = strings[0];
-        contact.phone = strings[1];
-        contact.address = strings[2];
-        contact.info = strings[3];
+        contact.setName(strings[0]);
+        contact.setPhone(strings[1]);
+        contact.setAddress(strings[2]);
+        contact.setInfo(strings[3]);
         contacts.add(contact);
         return true;
     }
@@ -45,7 +46,7 @@ public class Contacts implements ContactBook {
         try {
             FileWriter writer = new FileWriter(FILENAME, false);
             for (Contact contact:contacts) {
-                writer.write(contact.name + ";" + contact.phone + ";" + contact.address + ";" + contact.phone + ";\n");
+                writer.write(contact.getName() + ";" + contact.getPhone() + ";" + contact.getAddress() + ";" + contact.getPhone() + ";\n");
             }
             writer.close();
         } catch (IOException e) {
@@ -68,7 +69,7 @@ public class Contacts implements ContactBook {
     public String findContact(String name) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Contact contact:contacts) {
-            if (contact.name.toLowerCase(Locale.getDefault()).contains(name.toLowerCase(Locale.getDefault()))) {
+            if (contact.getName().toLowerCase(Locale.getDefault()).contains(name.toLowerCase(Locale.getDefault()))) {
                 stringBuilder.append(contact.toString());
             }
         }
@@ -92,7 +93,7 @@ public class Contacts implements ContactBook {
     @Override
     public String deleteContact(String name) {
         for (Contact contact:contacts) {
-            if (contact.name.equals(name)) {
+            if (contact.getName().equals(name)) {
                 contacts.remove(contact);
                 if (!write()) {
                     return "Error save contact";

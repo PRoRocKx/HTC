@@ -19,8 +19,7 @@ public class InputParser {
             }
             if (opNum == input.length()-1) {
                 return new Expression(false);
-            }
-            else {
+            } else {
                 double n1;
                 double n2;
                 try {
@@ -79,13 +78,11 @@ public class InputParser {
                     break;
                 }
                 x--;
-            }
-            else{
+            } else{
                 if (input.charAt(x) == '-' && !findMinus) {
                     findMinus = true;
                     x--;
-                }
-                else {
+                } else {
                     if (findMinus) {
                         findMinus = false;
                         x++;
@@ -106,8 +103,7 @@ public class InputParser {
             int tempY = new String(OPERATIONS).indexOf(input.charAt(y));
             if (tempY == -1) {
                 y++;
-            }
-            else {
+            } else {
                 if (y == op + 1 && input.charAt(y) == '-') {
                     y++;
                     continue;

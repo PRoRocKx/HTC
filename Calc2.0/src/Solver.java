@@ -4,13 +4,17 @@ import java.util.Arrays;
 public class Solver implements Calc {
 
     private final InputParser inputParser;
+    private final SimpleSolver simpleSolver;
+
+    private final int OPERATORS_GROUP = 3;
 
     public Solver() {
         inputParser = new InputParser();
+        simpleSolver = new SimpleSolver();
     }
 
     private char[] getChar(int i){
-        char[] chars = new char[2];
+        char[] chars = new char[OPERATORS_GROUP - 1];
         switch (i){
             case 0:
                 chars[0] = '^';
@@ -31,7 +35,7 @@ public class Solver implements Calc {
     @Override
     public double calculate(String exp) throws ParseException {
         //for (int i = InputParser.OPERATIONS.length - 1; i >= 0 ; i--) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < OPERATORS_GROUP; i++) {
             boolean find = true;
             do {
                 char[] chars = getChar(i);
@@ -54,7 +58,6 @@ public class Solver implements Calc {
 
     @Override
     public double calculate(Expression exp) {
-        SimpleSolver simpleSolver = new SimpleSolver();
         return simpleSolver.calculate(exp);
     }
 }

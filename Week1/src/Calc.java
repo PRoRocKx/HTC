@@ -35,12 +35,10 @@ public class Calc {
         if (expression.isValid()){
             int intResult = (int)expression.getResult();
             return expression.getResult() == intResult ? String.valueOf(intResult) : String.valueOf(expression.getResult());
-        }
-        else{
+        } else{
             if (expression.getError() != null && !expression.getError().isEmpty()) {
                 return expression.getError();
-            }
-            else {
+            } else {
                 return exp + " is not an expression";
             }
         }

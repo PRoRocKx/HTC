@@ -4,10 +4,12 @@ public class SolverEX implements Calc{
 
     private final Calc simpleSolver;
     private final InputParser inputParser;
+    private final Calc calc;
 
     SolverEX() {
         simpleSolver = new SimpleSolver();
         inputParser = new InputParser();
+        calc = new Solver();
     }
 
     @Override
@@ -18,12 +20,10 @@ public class SolverEX implements Calc{
             if (tempExp != null) {
                 Calc calc = new Solver();
                 exp = inputParser.replace(exp, tempExp, calc.calculate(tempExp.substring(1,tempExp.length() - 1)));
-            }
-            else {
+            } else {
                 stop = true;
             }
         }while (!stop);
-        Calc calc = new Solver();
         return calc.calculate(exp);
     }
 
