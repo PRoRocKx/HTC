@@ -65,8 +65,9 @@ public class Graph {
                     break;
                 }
             }
-            if (!find)
+            if (!find) {
                 stack.pop();
+            }
         }
     }
     public void breadthFirstSearch(){
