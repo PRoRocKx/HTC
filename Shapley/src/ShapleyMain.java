@@ -4,19 +4,23 @@ import java.util.List;
 public class ShapleyMain {
 
     private static int getFact(int f) {
-        if (f == 0)
+        if (f == 0) {
             return 1;
-        if(f == 1)
+        }
+        if(f == 1) {
             return f;
+        }
         return f * getFact(--f);
     }
 
 
     private static int getCoalition(List<Coalition> coalitions, List<Player> players){
         for (Coalition coalition : coalitions) {
-            if (coalition.players.size() == players.size())
-                if (coalition.players.containsAll(players))
+            if (coalition.players.size() == players.size()){
+                if (coalition.players.containsAll(players)) {
                     return coalition.gain;
+                }
+            }
         }
         return 0;
     }
