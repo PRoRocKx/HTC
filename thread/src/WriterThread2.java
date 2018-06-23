@@ -7,8 +7,9 @@ public class WriterThread2 extends WriterThread{
     public void run() {
         while(true) {
             tick = syncObj.getTick(tick, sleepTick);
-            if (tick % sleepTick == 0)
+            if (tick % sleepTick == 0) {
                 System.out.println(Thread.currentThread().getName());
+            }
         }
     }
 }

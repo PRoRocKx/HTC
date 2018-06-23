@@ -11,8 +11,9 @@ public class WriterThread implements Runnable{
         public void run() {
             while(true) {
                 tick = syncObj.getTick(tick, sleepTick);
-                if (tick % sleepTick == 0)
+                if (tick % sleepTick == 0) {
                     System.out.println(Thread.currentThread().getName() + " " + (System.currentTimeMillis() - syncObj.getTime()));
+                }
             }
         }
 }
