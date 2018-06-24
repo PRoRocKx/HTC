@@ -7,17 +7,22 @@ public class SimpleSolver implements Calc {
         inputParser = new InputParser();
     }
 
-    public double calculate(Expression expression){
-        switch (expression.getAction()){
-            case DIFF: expression.setResult(expression.getA() - expression.getB());
+    public double calculate(Expression expression) {
+        switch (expression.getAction()) {
+            case DIFF:
+                expression.setResult(expression.getA() - expression.getB());
                 break;
-            case SUM: expression.setResult(expression.getA() + expression.getB());
+            case SUM:
+                expression.setResult(expression.getA() + expression.getB());
                 break;
-            case MULT: expression.setResult(expression.getA() * expression.getB());
+            case MULT:
+                expression.setResult(expression.getA() * expression.getB());
                 break;
-            case QUOT: expression.setResult(expression.getA() / expression.getB());
+            case QUOT:
+                expression.setResult(expression.getA() / expression.getB());
                 break;
-            case EXP: expression.setResult(Math.pow(expression.getA(), expression.getB()));
+            case EXP:
+                expression.setResult(Math.pow(expression.getA(), expression.getB()));
                 break;
         }
         return expression.getResult();

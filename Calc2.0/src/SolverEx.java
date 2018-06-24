@@ -1,12 +1,12 @@
 import java.text.ParseException;
 
-public class SolverEX implements Calc{
+public class SolverEx implements Calc {
 
     private final Calc simpleSolver;
     private final InputParser inputParser;
     private final Calc calc;
 
-    SolverEX() {
+    SolverEx() {
         simpleSolver = new SimpleSolver();
         inputParser = new InputParser();
         calc = new Solver();
@@ -18,12 +18,12 @@ public class SolverEX implements Calc{
         do {
             String tempExp = inputParser.findBrackets(exp);
             if (tempExp != null) {
-                Calc calc = new Solver();
-                exp = inputParser.replace(exp, tempExp, calc.calculate(tempExp.substring(1,tempExp.length() - 1)));
+                //Calc calc = new Solver();
+                exp = inputParser.replace(exp, tempExp, calc.calculate(tempExp.substring(1, tempExp.length() - 1)));
             } else {
                 stop = true;
             }
-        }while (!stop);
+        } while (!stop);
         return calc.calculate(exp);
     }
 

@@ -5,10 +5,10 @@ public class FileIO {
 
     private static final String FILENAME = "calc.txt";
 
-    public String read(){
+    public String read() {
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(
-                        new FileInputStream(FILENAME), StandardCharsets.UTF_8))){
+                        new FileInputStream(FILENAME), StandardCharsets.UTF_8))) {
             String line;
             if ((line = reader.readLine()) != null) {
                 return (line);
@@ -19,9 +19,9 @@ public class FileIO {
         return null;
     }
 
-    public void write(Double res){
-        try (FileWriter writer = new FileWriter(FILENAME, true)){
-            writer.write( "\n" + res.toString());
+    public void write(Double res) {
+        try (FileWriter writer = new FileWriter(FILENAME, true)) {
+            writer.write("\n" + res.toString());
 
             writer.close();
         } catch (IOException e) {

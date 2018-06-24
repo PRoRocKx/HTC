@@ -13,9 +13,9 @@ public class Solver implements Calc {
         simpleSolver = new SimpleSolver();
     }
 
-    private char[] getChar(int i){
+    private char[] getChar(int i) {
         char[] chars = new char[OPERATORS_GROUP - 1];
-        switch (i){
+        switch (i) {
             case 0:
                 chars[0] = '^';
                 chars[1] = '^';
